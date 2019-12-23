@@ -1,0 +1,29 @@
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Home from '../views/Home.vue'
+{{#each list}}
+import {{file}} from '../views/{{file}}.vue'
+{{/each}}
+Vue.use(VueRouter)
+
+const routes = [{
+    path: '/',
+    name: 'home',
+    component: Home
+  },
+  {{#each list}}
+  {
+    path: '/{{name}}',
+    name: '{{about}}',
+    component: () => import('../views/{{file}}.vue')
+  },
+  {{/each}}
+]
+
+const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes
+})
+
+export default router
