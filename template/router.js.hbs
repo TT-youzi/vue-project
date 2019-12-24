@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 {{#each list}}
-import {{file}} from '../views/{{file}}.vue'
+import {{componentName}} from '../views/{{file}}'
 {{/each}}
 Vue.use(VueRouter)
 
@@ -14,8 +14,8 @@ const routes = [{
   {{#each list}}
   {
     path: '/{{name}}',
-    name: '{{about}}',
-    component: () => import('../views/{{file}}.vue')
+    name: '{{name}}',
+    component: {{componentName}}
   },
   {{/each}}
 ]
